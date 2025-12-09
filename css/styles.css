@@ -375,6 +375,19 @@ li { margin-bottom: 0.4rem; }
 
 .waitlist-form.form--has-error input[name="email"] { border-color: rgba(209, 38, 61, 0.9); background: rgba(209, 38, 61, 0.08); }
 
+.form-success {
+  display: none;
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.85rem;
+  background: #ecfdf3;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 0.9rem;
+}
+
+.waitlist-form.form--success .form-success { display: block; }
+
 .waitlist-disclaimer { max-width: 36rem; margin: 1.4rem auto 0; font-size: 0.82rem; color: var(--color-text-soft); }
 
 /* Page layouts */

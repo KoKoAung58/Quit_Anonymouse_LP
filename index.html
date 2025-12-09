@@ -235,9 +235,9 @@
           </p>
 
           <div class="form-grid">
-            <div class="field">
-              <label for="firstName">First name (optional)</label>
-              <input id="firstName" name="firstName" type="text" autocomplete="given-name">
+            <div class="field field--required">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name">
             </div>
             <div class="field field--required">
               <label for="email">Email address</label>
@@ -246,6 +246,10 @@
               <p class="field-error" data-error-for="email" aria-live="polite"></p>
             </div>
           </div>
+
+          <p class="form-success" data-form-success role="status" aria-live="polite" hidden>
+            You’re on the waitlist. Watch your inbox for early access updates.
+          </p>
 
           <button type="submit" class="btn btn-primary btn-full">Join the Waitlist</button>
           <!-- Optional: enable this if you turn on reCAPTCHA -->

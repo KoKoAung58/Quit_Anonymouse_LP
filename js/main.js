@@ -52,6 +52,29 @@
   if (form) {
     var emailInput = form.querySelector('input[name="email"]');
     var errorEl = form.querySelector('[data-error-for="email"]');
+    var successEl = form.querySelector('[data-form-success]');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    function encodeFormData(formEl) {
+      var formData = new FormData(formEl);
+      var params = new URLSearchParams();
+      formData.forEach(function (value, key) {
+        params.append(key, value);
+      });
+      return params.toString();
+    }
+
+    function showSuccess() {
+      form.classList.add('form--success');
+      if (successEl) {
+        successEl.hidden = false;
+      }
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Added to waitlist';
+      }
+      form.reset();
+    }
 
     form.addEventListener('submit', function (event) {
       if (!emailInput) return;
@@ -67,6 +90,37 @@
         if (errorEl) {
           errorEl.textContent = '';
         }
+
+        if (!window.fetch) return;
+        event.preventDefault();
+        if (submitBtn) {
+          submitBtn.setAttribute('aria-busy', 'true');
+          submitBtn.textContent = 'Sending...';
+        }
+
+        var submissionUrl = form.getAttribute('action') || '/';
+
+        fetch(submissionUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeFormData(form)
+        })
+          .then(function (response) {
+            if (response && response.ok) {
+              showSuccess();
+            } else {
+              form.submit();
+            }
+          })
+          .catch(function () {
+            form.submit();
+          })
+          .finally(function () {
+            if (submitBtn && !submitBtn.disabled) {
+              submitBtn.removeAttribute('aria-busy');
+              submitBtn.textContent = 'Join the Waitlist';
+            }
+          });
       }
     });
   }
