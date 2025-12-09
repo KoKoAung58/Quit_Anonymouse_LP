@@ -55,8 +55,18 @@
     var successEl = form.querySelector('[data-form-success]');
     var failureEl = form.querySelector('[data-form-error]');
     var submitBtn = form.querySelector('button[type="submit"]');
-    var iframe = document.querySelector('iframe[name="form-target"]');
-    var pendingSubmit = false;
+
+    var submissionUrl = form.getAttribute('data-submit-endpoint') || '/';
+    var redirectUrl = form.getAttribute('action') || '/thank-you.html';
+
+    function encodeFormData(formEl) {
+      var formData = new FormData(formEl);
+      var params = new URLSearchParams();
+      formData.forEach(function (value, key) {
+        params.append(key, value);
+      });
+      return params.toString();
+    }
 
     function showSuccess() {
       form.classList.add('form--success');
@@ -89,34 +99,6 @@
       }
     }
 
-    function handleComplete(isOk) {
-      pendingSubmit = false;
-      if (submitBtn) {
-        submitBtn.removeAttribute('aria-busy');
-        submitBtn.textContent = 'Join the Waitlist';
-      }
-      if (isOk) {
-        showSuccess();
-      } else {
-        showFailure();
-      }
-    }
-
-    if (iframe) {
-      iframe.addEventListener('load', function () {
-        if (!pendingSubmit) return;
-        var doc = iframe.contentDocument;
-        var isOk = true;
-        if (doc) {
-          var text = doc.body ? doc.body.textContent || '' : '';
-          if (/404|not found/i.test(text)) {
-            isOk = false;
-          }
-        }
-        handleComplete(isOk);
-      });
-    }
-
     form.addEventListener('submit', function (event) {
       if (!emailInput) return;
       if (!emailInput.value || !emailInput.validity.valid) {
@@ -138,14 +120,31 @@
           submitBtn.setAttribute('aria-busy', 'true');
           submitBtn.textContent = 'Sending...';
         }
-        pendingSubmit = true;
-        form.submit();
-        // If the iframe never loads (unlikely), fail safe after 6 seconds.
-        setTimeout(function () {
-          if (pendingSubmit) {
-            handleComplete(false);
-          }
-        }, 6000);
+        fetch(submissionUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeFormData(form)
+        })
+          .then(function (response) {
+            if (response && response.ok) {
+              showSuccess();
+            } else {
+              showFailure();
+              form.setAttribute('action', redirectUrl);
+              form.submit();
+            }
+          })
+          .catch(function () {
+            showFailure();
+            form.setAttribute('action', redirectUrl);
+            form.submit();
+          })
+          .finally(function () {
+            if (submitBtn && !submitBtn.disabled) {
+              submitBtn.removeAttribute('aria-busy');
+              submitBtn.textContent = 'Join the Waitlist';
+            }
+          });
       }
     });
   }
