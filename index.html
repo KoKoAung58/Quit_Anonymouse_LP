@@ -227,6 +227,7 @@
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           action="/"
+          target="form-target"
           class="waitlist-form"
         >
           <input type="hidden" name="form-name" value="waitlist">
@@ -259,6 +260,7 @@
           <!-- Optional: enable this if you turn on reCAPTCHA -->
           <!-- <div data-netlify-recaptcha="true"></div> -->
         </form>
+        <iframe name="form-target" hidden title="Waitlist submission"></iframe>
 
         <p class="waitlist-disclaimer">
           This tool is for adults seeking to change their own habits. It does not replace medical, therapeutic, or crisis support. Please reach professional help if you need immediate assistance.
@@ -268,7 +270,8 @@
   </main>
 
   <!-- Hidden form clone to ensure Netlify detects the waitlist form at build time -->
-  <form name="waitlist" netlify netlify-honeypot="bot-field" hidden>
+  <form name="waitlist" netlify data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="waitlist">
     <input type="text" name="name">
     <input type="email" name="email">
     <input type="text" name="bot-field">
