@@ -54,6 +54,8 @@
     var errorEl = form.querySelector('[data-error-for="email"]');
     var successEl = form.querySelector('[data-form-success]');
     var submitBtn = form.querySelector('button[type="submit"]');
+    var submissionUrl = form.getAttribute('data-submit-endpoint') || '/';
+    var redirectUrl = form.getAttribute('action') || '/thank-you';
 
     function encodeFormData(formEl) {
       var formData = new FormData(formEl);
@@ -98,8 +100,6 @@
           submitBtn.textContent = 'Sending...';
         }
 
-        var submissionUrl = form.getAttribute('action') || '/';
-
         fetch(submissionUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -109,10 +109,12 @@
             if (response && response.ok) {
               showSuccess();
             } else {
+              form.setAttribute('action', redirectUrl);
               form.submit();
             }
           })
           .catch(function () {
+            form.setAttribute('action', redirectUrl);
             form.submit();
           })
           .finally(function () {
