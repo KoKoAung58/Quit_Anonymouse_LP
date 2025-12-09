@@ -55,7 +55,7 @@
     var successEl = form.querySelector('[data-form-success]');
     var submitBtn = form.querySelector('button[type="submit"]');
     var submissionUrl = form.getAttribute('data-submit-endpoint') || '/';
-    var redirectUrl = form.getAttribute('action') || '/thank-you';
+    var redirectUrl = form.getAttribute('action') || '/thank-you.html';
 
     function encodeFormData(formEl) {
       var formData = new FormData(formEl);
