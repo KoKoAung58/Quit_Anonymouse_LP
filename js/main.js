@@ -129,9 +129,13 @@
               showSuccess();
             } else {
               showFailure();
+              form.submit();
             }
           })
-          .catch(showFailure)
+          .catch(function () {
+            showFailure();
+            form.submit();
+          })
           .finally(function () {
             if (submitBtn && !submitBtn.disabled) {
               submitBtn.removeAttribute('aria-busy');

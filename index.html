@@ -223,6 +223,7 @@
         <form
           name="waitlist"
           method="POST"
+          netlify
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           action="/"
@@ -265,6 +266,13 @@
       </div>
     </section>
   </main>
+
+  <!-- Hidden form clone to ensure Netlify detects the waitlist form at build time -->
+  <form name="waitlist" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <input type="text" name="bot-field">
+  </form>
 
   <footer class="site-footer">
     <div class="container footer-inner">
