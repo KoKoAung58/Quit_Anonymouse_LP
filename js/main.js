@@ -53,9 +53,9 @@
     var emailInput = form.querySelector('input[name="email"]');
     var errorEl = form.querySelector('[data-error-for="email"]');
     var successEl = form.querySelector('[data-form-success]');
+    var failureEl = form.querySelector('[data-form-error]');
     var submitBtn = form.querySelector('button[type="submit"]');
-    var submissionUrl = form.getAttribute('data-submit-endpoint') || '/';
-    var redirectUrl = form.getAttribute('action') || '/thank-you.html';
+    var submissionUrl = form.getAttribute('action') || '/';
 
     function encodeFormData(formEl) {
       var formData = new FormData(formEl);
@@ -68,14 +68,33 @@
 
     function showSuccess() {
       form.classList.add('form--success');
+      form.classList.remove('form--error');
       if (successEl) {
         successEl.hidden = false;
+      }
+      if (failureEl) {
+        failureEl.hidden = true;
       }
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Added to waitlist';
       }
       form.reset();
+    }
+
+    function showFailure() {
+      form.classList.add('form--error');
+      form.classList.remove('form--success');
+      if (failureEl) {
+        failureEl.hidden = false;
+      }
+      if (successEl) {
+        successEl.hidden = true;
+      }
+      if (submitBtn) {
+        submitBtn.removeAttribute('disabled');
+        submitBtn.textContent = 'Try again';
+      }
     }
 
     form.addEventListener('submit', function (event) {
@@ -109,14 +128,10 @@
             if (response && response.ok) {
               showSuccess();
             } else {
-              form.setAttribute('action', redirectUrl);
-              form.submit();
+              showFailure();
             }
           })
-          .catch(function () {
-            form.setAttribute('action', redirectUrl);
-            form.submit();
-          })
+          .catch(showFailure)
           .finally(function () {
             if (submitBtn && !submitBtn.disabled) {
               submitBtn.removeAttribute('aria-busy');

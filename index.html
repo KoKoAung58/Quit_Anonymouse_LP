@@ -225,8 +225,7 @@
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/thank-you.html"
-          data-submit-endpoint="/"
+          action="/"
           class="waitlist-form"
         >
           <input type="hidden" name="form-name" value="waitlist">
@@ -248,8 +247,11 @@
             </div>
           </div>
 
-          <p class="form-success" data-form-success role="status" aria-live="polite" hidden>
+          <p class="form-alert form-alert--success" data-form-success role="status" aria-live="polite" hidden>
             You’re on the waitlist. Watch your inbox for early access updates.
+          </p>
+          <p class="form-alert form-alert--error" data-form-error role="status" aria-live="polite" hidden>
+            We couldn’t send that just now. Please check your connection and try again.
           </p>
 
           <button type="submit" class="btn btn-primary btn-full">Join the Waitlist</button>
