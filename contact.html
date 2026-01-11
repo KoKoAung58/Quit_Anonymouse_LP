@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact – Quit Anonymous</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Send a message to Quit Anonymous." />
+  <link rel="canonical" href="https://quitanonymous.app/contact.html">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <meta name="theme-color" content="#0E0F13">
+
+  <meta property="og:title" content="Contact – Quit Anonymous">
+  <meta property="og:description" content="Send a message to Quit Anonymous.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://quitanonymous.app/contact.html">
+  <meta property="og:image" content="https://quitanonymous.app/assets/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact – Quit Anonymous">
+  <meta name="twitter:description" content="Send a message to Quit Anonymous.">
+  <meta name="twitter:image" content="https://quitanonymous.app/assets/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Quit Anonymous: Quit Porn",
+    "url": "https://quitanonymous.app/",
+    "logo": "https://quitanonymous.app/assets/owl.png",
+    "description": "Quit Anonymous helps adults reduce adult-content exposure with anonymous groups, 24/7 AI chat, panic mode blocking, and daily check-ins.",
+    "sameAs": []
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/index.html" class="logo">
+        <span class="logo__primary">Quit Anonymous</span>
+        <span class="logo__secondary">Quit Porn</span>
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Toggle primary navigation"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        data-nav-toggle
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav id="primary-nav" class="site-nav" aria-label="Primary" data-nav>
+        <ul class="nav-links">
+          <li><a href="/index.html#how-it-works">How it works</a></li>
+          <li><a href="/index.html#benefits">Benefits</a></li>
+          <li><a href="/index.html#faq">FAQ</a></li>
+          <li><a href="/contact.html" aria-current="page">Contact</a></li>
+          <li><a class="nav-links__cta" href="/index.html#waitlist">Join the Waitlist</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Contact us</h1>
+        <p class="page-intro">Send a message and we will get back to you.</p>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container page-content">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/thank-you.html"
+          class="waitlist-form"
+        >
+          <input type="hidden" name="form-name" value="contact">
+
+          <p class="visually-hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
+
+          <div class="form-grid form-grid--stack">
+            <div class="field field--required">
+              <label for="contact-email">Email address</label>
+              <input id="contact-email" name="email" type="email" required autocomplete="email">
+            </div>
+            <div class="field field--required">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" required placeholder="What do you need help with?">
+            </div>
+            <div class="field field--required">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Share the details here..."></textarea>
+            </div>
+          </div>
+
+          <input id="submitted-at" name="submitted_at" type="hidden" data-submitted-at>
+
+          <button type="submit" class="btn btn-primary btn-full">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; <span data-year></span> Quit Anonymous. All rights reserved.</p>
+      <nav aria-label="Footer" class="footer-nav">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/contact.html" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

@@ -149,6 +149,25 @@
     });
   }
 
+  var timestampForms = document.querySelectorAll('form');
+  if (timestampForms.length) {
+    function setTimestamp(field) {
+      field.value = new Date().toISOString();
+    }
+
+    for (var i = 0; i < timestampForms.length; i += 1) {
+      var timestampField = timestampForms[i].querySelector('[data-submitted-at]');
+      if (!timestampField) continue;
+      setTimestamp(timestampField);
+      timestampForms[i].addEventListener('submit', function (event) {
+        var field = event.target.querySelector('[data-submitted-at]');
+        if (field) {
+          setTimestamp(field);
+        }
+      });
+    }
+  }
+
   var yearEl = document.querySelector('[data-year]');
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());

@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <title>Privacy Policy – Quit Anonymous</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Read how Quit Anonymous collects, uses, and protects your information, including AI chat and sponsor SMS alerts.">
+  <meta name="description" content="Read how Quit Anonymous collects, uses, and protects your information, including AI chat and anonymous group support.">
   <link rel="canonical" href="https://quitanonymous.app/privacy.html">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <meta name="theme-color" content="#0E0F13">
 
   <meta property="og:title" content="Privacy Policy – Quit Anonymous">
-  <meta property="og:description" content="Learn how Quit Anonymous handles authentication info, AI chat, sponsor SMS, and data retention.">
+  <meta property="og:description" content="Learn how Quit Anonymous handles authentication info, AI chat, anonymous groups, and data retention.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://quitanonymous.app/privacy.html">
   <meta property="og:image" content="https://quitanonymous.app/assets/og-image.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy – Quit Anonymous">
-  <meta name="twitter:description" content="Learn how Quit Anonymous handles authentication info, AI chat, sponsor SMS, and data retention.">
+  <meta name="twitter:description" content="Learn how Quit Anonymous handles authentication info, AI chat, anonymous groups, and data retention.">
   <meta name="twitter:image" content="https://quitanonymous.app/assets/og-image.png">
 
   <script type="application/ld+json">
@@ -53,6 +53,7 @@
           <li><a href="/index.html#how-it-works">How it works</a></li>
           <li><a href="/index.html#benefits">Benefits</a></li>
           <li><a href="/index.html#faq">FAQ</a></li>
+          <li><a href="/contact.html">Contact</a></li>
           <li><a class="nav-links__cta" href="/index.html#waitlist">Join the Waitlist</a></li>
         </ul>
       </nav>
@@ -78,10 +79,12 @@
           <li>Email or phone number (for authentication)</li>
           <li>Apple Sign-In or Google Sign-In identifiers</li>
           <li>Name or nickname</li>
-          <li>Optional sponsor phone number</li>
+          <li>Anonymous group participation (check-ins or support requests)</li>
+          <li>Notification preferences</li>
           <li>Check-in responses</li>
           <li>Streak progress</li>
           <li>Relapse logs</li>
+          <li>Panic mode entries and grounding task selections</li>
           <li>Onboarding responses (e.g., goals, triggers, motivations)</li>
           <li>AI chat content (Ano)</li>
           <li>Recorded “future you” videos you choose to save</li>
@@ -98,12 +101,21 @@
         </ul>
         <p>Analytics may be added later (you will be informed in policy updates).</p>
 
-        <h3>1C. Sensitive Data</h3>
+        <h3>1C. Device Permissions &amp; Local Data</h3>
+        <p>The App may request device permissions and store limited data locally to support core features.</p>
+        <ul>
+          <li>Screen Time or family control permissions to block selected apps during strong urges and reduce access to adult content</li>
+          <li>Notification settings and preferences</li>
+          <li>Local cache data stored on your device to improve performance</li>
+        </ul>
+
+        <h3>1D. Sensitive Data</h3>
         <p>The App may collect information related to:</p>
         <ul>
           <li>Porn recovery progress</li>
           <li>Personal motivations</li>
           <li>Relapse details</li>
+          <li>Panic mode reflections or entries</li>
           <li>User-submitted emotional reflections</li>
         </ul>
         <p>These are user-initiated and used solely to provide the core functionality of the App. We do not sell or share this data for advertising.</p>
@@ -114,27 +126,29 @@
           <li>Authenticate users</li>
           <li>Maintain your streak</li>
           <li>Provide check-ins and progress tracking</li>
+          <li>Match you into anonymous groups and enable group activity</li>
+          <li>Power panic mode, grounding tasks, and app blocking</li>
           <li>Power AI chat conversations</li>
-          <li>Personalize AI responses using onboarding answers processed through OpenAI GPT models</li>
-          <li>Send SMS notifications to your sponsor (if enabled)</li>
+          <li>Personalize AI responses using onboarding answers, relapse entries, and panic mode data processed through OpenAI GPT models</li>
+          <li>Send notifications you choose to receive (daily reminder, urge support, group activity, milestone)</li>
           <li>Improve app performance</li>
           <li>Detect and prevent abuse</li>
         </ul>
 
-        <h2>3. SMS Sponsor Notifications</h2>
-        <p>If you enter a sponsor phone number:</p>
+        <h2>3. Anonymous Group Support</h2>
+        <p>If you join an anonymous group:</p>
         <ul>
-          <li>We send SMS messages via Twilio</li>
-          <li>Only minimal, non-sensitive information is sent</li>
-          <li>You are responsible for obtaining your sponsor’s consent</li>
-          <li>Messages may reveal that you requested support but never explicit content</li>
+          <li>Groups are limited to four people.</li>
+          <li>No real names are shared, supporting AA-style anonymity.</li>
+          <li>Group members only see the limited information you choose to share.</li>
+          <li>We may moderate or remove content to protect safety.</li>
         </ul>
 
         <h2>4. AI Chat (OpenAI)</h2>
         <p>Your chat messages with Ano are:</p>
         <ul>
           <li>Sent to OpenAI for processing</li>
-          <li>Combined with your onboarding responses (e.g., goals, triggers, motivations) to tailor GPT-generated answers</li>
+          <li>Combined with your onboarding responses, relapse entries, and panic mode data to tailor GPT-generated answers</li>
           <li>Temporarily stored to maintain conversation context</li>
           <li>Saved in Firestore unless deleted by you</li>
           <li>Used only for app functionality, not for model training unless you opt-in (default: opt-out)</li>
@@ -150,14 +164,13 @@
           <li>Firebase Cloud Messaging</li>
           <li>Apple Sign In</li>
           <li>Google Sign In</li>
-          <li>Twilio (SMS)</li>
           <li>OpenAI (AI chat)</li>
         </ul>
         <p>Each provider has its own privacy practices.</p>
 
         <h2>6. Data Retention</h2>
-        <p>Your data is retained while your account is active. After account deletion, we retain data for 30 days for safety, fraud prevention, and accidental deletion recovery. After 30 days, your data is permanently deleted.</p>
-        <p>You may request deletion anytime at: <a href="mailto:ko.k.aung.dev@gmail.com">ko.k.aung.dev@gmail.com</a></p>
+        <p>Your data is retained while your account is active. If you delete your account in Settings, your data is deleted immediately with no delay or recovery.</p>
+        <p>You can also download your data from Settings. If you need help, contact: <a href="mailto:ko.k.aung.dev@gmail.com">ko.k.aung.dev@gmail.com</a></p>
 
         <h2>7. Data Security</h2>
         <p>We implement reasonable security measures through Firebase and our providers, but no system is 100% secure. Users are responsible for not sharing sensitive information unnecessarily.</p>
@@ -170,12 +183,13 @@
         <ul>
           <li>Request access to your data</li>
           <li>Request correction</li>
-          <li>Request deletion</li>
+          <li>Delete your account immediately in Settings</li>
           <li>Opt-out of data storage for AI chats</li>
-          <li>Export your data</li>
+          <li>Download or export your data in Settings</li>
+          <li>Clear local cache data in Settings</li>
           <li>Withdraw consent</li>
         </ul>
-        <p>Submit requests to: <a href="mailto:ko.k.aung.dev@gmail.com">ko.k.aung.dev@gmail.com</a></p>
+        <p>You can manage most requests in Settings. For help, contact: <a href="mailto:ko.k.aung.dev@gmail.com">ko.k.aung.dev@gmail.com</a></p>
 
         <h2>10. Changes to This Privacy Policy</h2>
         <p>We may update this Policy occasionally. Continued use of the App constitutes acceptance of changes.</p>
@@ -192,7 +206,8 @@
       <nav aria-label="Footer" class="footer-nav">
         <a href="/privacy.html" aria-current="page">Privacy</a>
         <a href="/terms.html">Terms</a>
-        <a href="mailto:ko.k.aung.dev@gmail.com">Contact</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/contact.html">Contact</a>
       </nav>
     </div>
   </footer>
